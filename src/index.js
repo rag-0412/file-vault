@@ -1,15 +1,33 @@
-/**
- * Welcome to Cloudflare Workers! This is your first worker.
- *
- * - Run `npm run dev` in your terminal to start a development server
- * - Open a browser tab at http://localhost:8787/ to see your worker in action
- * - Run `npm run deploy` to publish your worker
- *
- * Learn more at https://developers.cloudflare.com/workers/
- */
+import { httpServerHandler} from "cloudflare:node";
+import express from "express";
+import fileRoutes from "./routes/file.routes.js"
+// import { env } from "cloudflare:workers";
+// import dotenv from 'dotenv';
 
-export default {
-	async fetch(request, env, ctx) {
-		return new Response("Hello World!");
-	},
-};
+const PORT = process.env.PORT || 3000;
+const app = express();
+
+app.use(express.json()); 
+
+app.get("/", (req, res) => {
+	res.json({
+		success: true,
+		message: "Express.js is running on CloudFlare Workers!",
+	});
+
+});
+
+app.get("/api/health", (req , res) =>{
+	res.json({
+		success:true,
+		message: "Server is Healthy and Working Fine..",
+	});
+});
+
+app.use("/api/files", fileRoutes);
+
+app.listen(PORT, () =>{
+	console.log(`server is running on the port ${PORT}`);
+
+});
+export default httpServerHandler({ port: 3000 });
