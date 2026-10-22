@@ -1,8 +1,8 @@
 import { httpServerHandler} from "cloudflare:node";
 import express from "express";
 import fileRoutes from "./routes/file.routes.js"
-// import { env } from "cloudflare:workers";
-// import dotenv from 'dotenv';
+import { env } from "cloudflare:workers";
+import dotenv from 'dotenv';
 
 const PORT = process.env.PORT || 3000;
 const app = express();
