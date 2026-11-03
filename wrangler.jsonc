@@ -13,9 +13,15 @@
 	"upload_source_maps": true,
 	"d1_databases": [
 		{
-			"binding": "file_vault_db",
+			"binding": "DB",
 			"database_name": "file-vault-db",
 			"database_id": "1e18faf9-fce4-43e7-9695-be33fe5df44c"
+		}
+	],
+	"r2_buckets": [
+		{
+			"bucket_name": "file-vault-storage",
+			"binding": "file_vault_storage"
 		}
 	]
 	/**
