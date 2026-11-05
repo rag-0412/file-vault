@@ -20,8 +20,8 @@
 	],
 	"r2_buckets": [
 		{
-			"bucket_name": "file-vault-storage",
-			"binding": "file_vault_storage"
+			"binding": "R2",
+			"bucket_name": "file-vault-storage"
 		}
 	]
 	/**
